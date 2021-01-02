@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 import { map } from 'rxjs/operators';
 
@@ -12,6 +12,25 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
 
+
+  installEvent;
+
+  @HostListener('window:beforeinstallprompt', ['$event'])
+  onBeforeInstallPrompt(event: Event){
+    console.log('[window:beforeinstallprompt]',event);
+    event.preventDefault();
+    this.installEvent = event;
+  }
+
+  installByUser(){
+    if(this.installEvent){
+      this.installEvent.prompt();
+      this.installEvent.userChoice.then(rta=>{
+        console.log(rta);
+      })
+
+    }
+  }
   total$: Observable<number>;
 
   constructor(

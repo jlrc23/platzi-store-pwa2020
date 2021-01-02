@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host 0.0.0.0",
     "build": "ng build",
+    "deploy": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -21,7 +22,9 @@
     "@angular/material": "^8.1.4",
     "@angular/platform-browser": "~8.2.4",
     "@angular/platform-browser-dynamic": "~8.2.4",
+    "@angular/pwa": "^0.1100.5",
     "@angular/router": "~8.2.4",
+    "@angular/service-worker": "~8.2.4",
     "@sentry/browser": "^5.6.3",
     "core-js": "^2.5.4",
     "file-saver": "^2.0.2",
